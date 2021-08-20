@@ -5,7 +5,7 @@ import { BsFillDropletFill } from 'react-icons/bs'
 import { GiWhirlwind } from 'react-icons/gi'
 import { WiSunrise } from 'react-icons/wi'
 import { WiSunset } from 'react-icons/wi'
-import { FaTemperatureHigh } from 'react-icons/fa'
+import { AiFillHome, AiOutlineHome } from 'react-icons/ai'
 import { MdDateRange } from 'react-icons/md'
 import { MdWbSunny } from 'react-icons/md'
 import Clouds from "../Images/Delhi2.png";
@@ -17,8 +17,8 @@ import { Link } from "react-router-dom";
 
 export default function Next() {
   const city = localStorage.getItem("city")
-  // const lat=localStorage.getItem("lat")
-  // const long=localStorage.getItem("long")
+  
+  const [timeArray, settimeArray] = useState([])
 
   const [data1, setdata1] = useState()
   const [data0, setdata0] = useState()
@@ -30,6 +30,28 @@ export default function Next() {
   const [data6, setdata6] = useState()
   const [data7, setdata7] = useState()
   const [data8, setdata8] = useState()
+
+  
+  
+   const date=(time)=>{
+    let dateObj= new Date(time*1000);
+    console.log("date",dateObj)
+    let hours = dateObj.getHours();
+    if(hours>12)
+    {
+      hours=hours-12;
+    }
+    
+    
+
+    let minutes = (dateObj.getMinutes()<10?'0':'') + dateObj.getMinutes();
+    console.log(minutes)
+    
+    let ans=hours.toString()+":"+minutes;
+    settimeArray(oldArray => [...oldArray, ans]);
+
+   }
+
 
 
 
@@ -56,6 +78,8 @@ export default function Next() {
             `https://api.openweathermap.org/data/2.5/onecall?lat=${res.data.coord.lat}&lon=${res.data.coord.lon}&exclude=hourly,minutely&units=metric&appid=${api_key}`
           )
           .then((res1) => {
+            
+            settimeArray([])
             console.log(city);
             console.log("city data=", res1.data)
             setdata1(res1.data.current);
@@ -68,6 +92,13 @@ export default function Next() {
             setdata6(res1.data.daily[5])
             setdata7(res1.data.daily[6])
             setdata8(res1.data.daily[7])
+            
+            for(var i=0;i<8;i++)
+            {
+              date(res1.data.daily[i].sunrise);
+              date(res1.data.daily[i].sunset);
+
+            }
 
 
             setunixTimestamp(res1.data.current.dt)
@@ -81,17 +112,28 @@ export default function Next() {
 
 
 
-  }, [])
+  }, [city])
+  
 
 
   return (
     <div>
       <div className=" googlefont1 bg-gradient-to-t p-2 from-green-400 to-blue-200
           h-screen w-screen flex ">
+            
         <div className="w-2/5 h-full rounded-lg shadow-2xl py-8 " >
+          
+          <Link 
+          to="/">
+          <button className=" ml-4 bg-transparent border-2 border-gray-200 inline-block rounded-full  p-2 py-1">
+            <div className="inline-block">
+              <AiFillHome size="1.3rem"/>
+            </div>
+          </button>
+          </Link>
 
-          <div className="text-5xl font-medium mt-6 text-gray-800 text-center ">
-            Today
+          <div className="text-5xl font-medium mt-0 text-gray-800 text-center ">
+            Today 
           </div>
 
           <div className=" text-gray-500 font-bold mt-2 text-center ">
@@ -204,7 +246,7 @@ export default function Next() {
           <div>
             <div className="inline-block text-center w-2/5 mr-8 ml-10 mt-6 bg-transparent p-4  rounded-xl ">
               <div className="text-6xl text-gray-200">
-                6:20
+                {timeArray[0]}
                 <div className="inline-block ml-1 text-xl">
                   AM
                 </div>
@@ -216,7 +258,7 @@ export default function Next() {
               <div className=" text-xl text-gray-500">Sunrise</div>
             </div>
             <div className="inline-block text-center w-2/5 ml-0 mt-6 bg-transparent  p-4 rounded-xl ">
-              <div className="text-6xl text-gray-200">7:20
+              <div className="text-6xl text-gray-200">{timeArray[1]}
                 <div className="inline-block ml-1 text-xl">
                   PM
                 </div>
@@ -254,7 +296,9 @@ export default function Next() {
                             
                         </div> */}
 
-
+          <Link
+           to="/next"
+           onClick={()=>{localStorage.setItem("city","Delhi")}}>
           <button className="text-gray-300 w-52  mt-4 transform  hover:scale-105 bg-transparent    bg-cover bg-no-repeat z-10    rounded-xl ml-5  mb-4   text-xl mr-2   "
 
           >
@@ -267,8 +311,11 @@ export default function Next() {
 
 
           </button>
+          </Link>
 
-
+          <Link
+           to="/next"
+           onClick={()=>{localStorage.setItem("city","Kolkata")}}>
           <button className="text-gray-300 w-52  mt-4 transform  hover:scale-105 bg-transparent    bg-cover bg-no-repeat z-10    rounded-xl ml-2   mb-4   text-xl mr-2  "
 
           >
@@ -284,7 +331,11 @@ export default function Next() {
             <img src={Kolkata} alt="" className="w-full rounded-xl h-52" />
 
           </button>
+          </Link>
 
+          <Link
+           to="/next"
+           onClick={()=>{localStorage.setItem("city","Mumbai")}}>
           <button className="text-gray-300 w-52  mt-4 transform  hover:scale-105 bg-transparent    bg-cover bg-no-repeat z-10    rounded-xl ml-2   mb-4   text-xl mr-2  "
 
           >
@@ -300,6 +351,11 @@ export default function Next() {
             <img src={Mumbai} alt="" className="w-full rounded-xl h-52" />
 
           </button>
+          </Link>
+
+          <Link
+           to="/next"
+           onClick={()=>{localStorage.setItem("city","Chennai")}}>
           <button className="text-gray-300 w-52  mt-4 transform  hover:scale-105 bg-transparent    bg-cover bg-no-repeat z-10    rounded-xl ml-2  mb-4    text-xl mr-2  "
 
           >
@@ -315,6 +371,7 @@ export default function Next() {
             <img src={Chennai} alt="" className="w-full rounded-xl h-52" />
 
           </button>
+          </Link>
 
           <div className=" bg-transparent  px-2 inline-block mb-4  font-extrabold text-3xl text-gray-400 mx-2 ">
             Weekly
@@ -360,11 +417,11 @@ export default function Next() {
 
                 <div className="inline-block ml-2 text-yellow-600 ">
                   <WiSunrise size="1.5em" />
-                </div> 6:20 AM
+                </div>{timeArray[2]} AM
 
                 <div className="inline-block ml-2 text-yellow-600 ">
                   <WiSunset size="1.5em" />
-                </div> 7:20 PM
+                </div> {timeArray[3]} PM
 
               </div>
               <div className="w-1/5 text-base  h-8 ">
@@ -409,11 +466,11 @@ export default function Next() {
 
                 <div className="inline-block ml-2 text-yellow-600 ">
                   <WiSunrise size="1.5em" />
-                </div> 6:20 AM
+                </div> {timeArray[4]} AM
 
                 <div className="inline-block ml-2 text-yellow-600 ">
                   <WiSunset size="1.5em" />
-                </div> 7:20 PM
+                </div> {timeArray[5]} PM
 
               </div>
               <div className="w-1/5 text-base  h-8 ">
@@ -460,11 +517,11 @@ export default function Next() {
 
                 <div className="inline-block ml-2 text-yellow-600 ">
                   <WiSunrise size="1.5em" />
-                </div> 6:20 AM
+                </div> {timeArray[6]} AM
 
                 <div className="inline-block ml-2 text-yellow-600 ">
                   <WiSunset size="1.5em" />
-                </div> 7:20 PM
+                </div> {timeArray[7]} PM
 
               </div>
               <div className="w-1/5 text-base  h-8 ">
@@ -509,11 +566,11 @@ export default function Next() {
 
                 <div className="inline-block ml-2 text-yellow-600 ">
                   <WiSunrise size="1.5em" />
-                </div> 6:20 AM
+                </div> {timeArray[8]} AM
 
                 <div className="inline-block ml-2 text-yellow-600 ">
                   <WiSunset size="1.5em" />
-                </div> 7:20 PM
+                </div> {timeArray[9]} PM
 
               </div>
               <div className="w-1/5 text-base  h-8 ">
@@ -558,11 +615,11 @@ export default function Next() {
 
                 <div className="inline-block ml-2 text-yellow-600 ">
                   <WiSunrise size="1.5em" />
-                </div> 6:20 AM
+                </div> {timeArray[10]} AM
 
                 <div className="inline-block ml-2 text-yellow-600 ">
                   <WiSunset size="1.5em" />
-                </div> 7:20 PM
+                </div> {timeArray[11]} PM
 
               </div>
               <div className="w-1/5 text-base  h-8 ">
@@ -606,11 +663,11 @@ export default function Next() {
 
                 <div className="inline-block ml-2 text-yellow-600 ">
                   <WiSunrise size="1.5em" />
-                </div> 6:20 AM
+                </div> {timeArray[12]} AM
 
                 <div className="inline-block ml-2 text-yellow-600 ">
                   <WiSunset size="1.5em" />
-                </div> 7:20 PM
+                </div> {timeArray[13]} PM
 
               </div>
               <div className="w-1/5 text-base  h-8 ">
@@ -655,11 +712,11 @@ export default function Next() {
 
                 <div className="inline-block ml-2 text-yellow-600 ">
                   <WiSunrise size="1.5em" />
-                </div> 6:20 AM
+                </div> {timeArray[14]} AM
 
                 <div className="inline-block ml-2 text-yellow-600 ">
                   <WiSunset size="1.5em" />
-                </div> 7:20 PM
+                </div> {timeArray[15]} PM
 
               </div>
               <div className="w-1/5 text-base  h-8 ">

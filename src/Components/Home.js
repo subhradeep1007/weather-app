@@ -10,6 +10,7 @@ import Banglore from "../Images/Banglore.png"
 import Ahmedabad from "../Images/Ahmedabad.jpg"
 import Srinagar from "../Images/Srinagar.jpg"
 import { BiCloudLightRain } from 'react-icons/bi';
+import {FcSearch} from 'react-icons/fc'
 import { Link } from "react-router-dom";
 
 // import { BsCloud } from 'react-icons/bs';
@@ -74,92 +75,92 @@ export default function Home() {
         
         
         
-        axios
-            .post(
-                `https://api.openweathermap.org/data/2.5/onecall?lat=28.6667&lon=77.2167&exclude=hourly,minutely&units=metric&appid=${api_key}`
-            )
-            .then((res) => {
+        // axios
+        //     .post(
+        //         `https://api.openweathermap.org/data/2.5/onecall?lat=28.6667&lon=77.2167&exclude=hourly,minutely&units=metric&appid=${api_key}`
+        //     )
+        //     .then((res) => {
                 
-                settemp1(res.data.current.temp);
-            });
+        //         settemp1(res.data.current.temp);
+        //     });
 
-        axios
-            .post(
-                `https://api.openweathermap.org/data/2.5/onecall?lat=22.5697&lon=88.3697&exclude=hourly,minutely&units=metric&appid=${api_key}`
-            )
-            .then((res) => {
+        // axios
+        //     .post(
+        //         `https://api.openweathermap.org/data/2.5/onecall?lat=22.5697&lon=88.3697&exclude=hourly,minutely&units=metric&appid=${api_key}`
+        //     )
+        //     .then((res) => {
               
-                settemp2(res.data.current.temp);
-            });
+        //         settemp2(res.data.current.temp);
+        //     });
         
-            axios
-            .post(
-                `https://api.openweathermap.org/data/2.5/onecall?lat=19.0144&lon=72.8479&exclude=hourly,minutely&units=metric&appid=${api_key}`
-            )
-            .then((res) => {
+        //     axios
+        //     .post(
+        //         `https://api.openweathermap.org/data/2.5/onecall?lat=19.0144&lon=72.8479&exclude=hourly,minutely&units=metric&appid=${api_key}`
+        //     )
+        //     .then((res) => {
              
-                settemp3(res.data.current.temp);
-            });
+        //         settemp3(res.data.current.temp);
+        //     });
         
-            axios
-            .post(
-                `https://api.openweathermap.org/data/2.5/onecall?lat=13.0878&lon=80.2785&exclude=hourly,minutely&units=metric&appid=${api_key}`
-            )
-            .then((res) => {
+        //     axios
+        //     .post(
+        //         `https://api.openweathermap.org/data/2.5/onecall?lat=13.0878&lon=80.2785&exclude=hourly,minutely&units=metric&appid=${api_key}`
+        //     )
+        //     .then((res) => {
              
-                settemp4(res.data.current.temp);
-            });
+        //         settemp4(res.data.current.temp);
+        //     });
         
-            axios
-            .post(
-                `https://api.openweathermap.org/data/2.5/onecall?lat=12.9762&lon=77.6033&exclude=hourly,minutely&units=metric&appid=${api_key}`
-            )
-            .then((res) => {
+        //     axios
+        //     .post(
+        //         `https://api.openweathermap.org/data/2.5/onecall?lat=12.9762&lon=77.6033&exclude=hourly,minutely&units=metric&appid=${api_key}`
+        //     )
+        //     .then((res) => {
                 
-                settemp5(res.data.current.temp);
-            });
+        //         settemp5(res.data.current.temp);
+        //     });
         
-            axios
-            .post(
-                `https://api.openweathermap.org/data/2.5/onecall?lat=17.3753&lon=78.4744&exclude=hourly,minutely&units=metric&appid=${api_key}`
-            )
-            .then((res) => {
+        //     axios
+        //     .post(
+        //         `https://api.openweathermap.org/data/2.5/onecall?lat=17.3753&lon=78.4744&exclude=hourly,minutely&units=metric&appid=${api_key}`
+        //     )
+        //     .then((res) => {
                 
-                settemp6(res.data.current.temp);
-            });
+        //         settemp6(res.data.current.temp);
+        //     });
         
-            axios
-            .post(
-                `https://api.openweathermap.org/data/2.5/onecall?lat=23.0333&lon=72.6167&exclude=hourly,minutely&units=metric&appid=${api_key}`
-            )
-            .then((res) => {
+        //     axios
+        //     .post(
+        //         `https://api.openweathermap.org/data/2.5/onecall?lat=23.0333&lon=72.6167&exclude=hourly,minutely&units=metric&appid=${api_key}`
+        //     )
+        //     .then((res) => {
               
-                settemp7(res.data.current.temp);
-            });
+        //         settemp7(res.data.current.temp);
+        //     });
         
-            axios
-            .post(
-                `https://api.openweathermap.org/data/2.5/onecall?lat=26.9167&lon=75.8167&exclude=hourly,minutely&units=metric&appid=${api_key}`
-            )
-            .then((res) => {
+        //     axios
+        //     .post(
+        //         `https://api.openweathermap.org/data/2.5/onecall?lat=26.9167&lon=75.8167&exclude=hourly,minutely&units=metric&appid=${api_key}`
+        //     )
+        //     .then((res) => {
                 
-                settemp8(res.data.current.temp);
-            });
+        //         settemp8(res.data.current.temp);
+        //     });
         
-            axios
-            .post(
-                `https://api.openweathermap.org/data/2.5/onecall?lat=34.0833&lon=74.8167&exclude=hourly,minutely&units=metric&appid=${api_key}`
-            )
-            .then((res) => {
+        //     axios
+        //     .post(
+        //         `https://api.openweathermap.org/data/2.5/onecall?lat=34.0833&lon=74.8167&exclude=hourly,minutely&units=metric&appid=${api_key}`
+        //     )
+        //     .then((res) => {
                 
-                settemp9(res.data.current.temp);
-            });
+        //         settemp9(res.data.current.temp);
+        //     });
 
     }, []);
 
     return (
         <div>
-            <div className="googlefont1   bg-green-100  bg-gradient-to-t b   h-screen  flex w-screen ">
+            <div className="googlefont1   bg-green-100 overflow-hidden  bg-gradient-to-t   h-full  md:h-screen  flex w-screen ">
                 <div className="w-full font-bold   bg-gradient-to-t p-2  from-green-400 to-blue-200 h-full">
 
                     <div className="">
@@ -167,11 +168,11 @@ export default function Home() {
                     
                     
                         <input
-                            className="bg-white  border-2  mt-4 border-gray-300 rounded-full w-4/5 ml-20 py-4 px-6 text-gray-900 leading-tight focus:outline-none inline-block"
+                            className="bg-white  border-2  mt-4 border-gray-300 rounded-full w-64 md:w-4/5 ml-2 md:ml-20 py-4 pl-2 md:px-6 text-gray-900 text-sm md:text-base leading-tight focus:outline-none inline-block"
                             type="text"
                             value={city}
                             onChange={exactSearch}
-                            placeholder="Search any city and press search.."
+                            placeholder="Search any city and press search..."
                             onKeyDown={(e) => {
                                 if (e.key === "Enter") {
                                     onChangeHandler();
@@ -183,11 +184,11 @@ export default function Home() {
                         <Link
                       to="/next"
                       onClick={()=>{onChangeHandler()}}
-                      className="inline-block no-underline py-2 px-4 "
+                      className="inline-block no-underline ml-0 md:ml-2 "
                     >
-                        <button className=" transform  hover:scale-105 -ml-3 rounded-xl   border-2 border-gray-300    px-2 py-2 bg-blue-100 "
+                        <button className=" transform  hover:scale-105 md:-ml-3 rounded-xl text-base md:text-base relative top-4      px-2 py-2 "
                         >
-                            Search
+                            <FcSearch size="2.7rem"/>
                         </button>
                        
                         </Link>
@@ -198,10 +199,10 @@ export default function Home() {
                       to="/next"
                       onClick={()=>{localStorage.setItem("city","Delhi")}}
                     >
-                        <button className="text-gray-300 w-64  mt-4 transform  hover:scale-105 bg-white shadow-xl   bg-cover bg-no-repeat z-10    rounded-xl ml-20  mb-4   text-xl mr-2  "
+                        <button className="text-gray-300 w-80 md:w-64  mt-4 transform  hover:scale-105 bg-white shadow-xl   bg-cover bg-no-repeat z-10    rounded-xl ml-3  md:ml-20  mb-4   text-xl md:mr-2  "
                         
                         >   
-                           <img src={Clouds} alt="" className="w-full rounded-t-xl h-52" />
+                           <img src={Clouds} alt="" className="w-full rounded-t-xl h-64  md:h-52" />
                             <div className="text-4xl mx-2  font-bold  text-gray-900  block  text-left">
                                 {Math.round(temp1)}°C 
                                 <div className="inline-block ml-4 ">
@@ -219,10 +220,10 @@ export default function Home() {
                       to="/next"
                       onClick={()=>{localStorage.setItem("city","Kolkata")}}
                     >
-                        <button className="text-gray-300 w-64  mt-4 transform  hover:scale-105 bg-green-500 shadow-xl   bg-cover bg-no-repeat z-10    rounded-xl ml-2  m-4  text-xl mr-2  "
+                        <button className="text-gray-300 w-80 md:w-64  mt-4 transform  hover:scale-105 bg-green-500 shadow-xl   bg-cover bg-no-repeat z-10    rounded-xl ml-3 md:ml-2 m-4  text-xl mr-2  "
                         
                         >   
-                           <img src={Kolkata} alt="" className="w-full rounded-t-xl h-52" />
+                           <img src={Kolkata} alt="" className="w-full rounded-t-xl h-64 md:h-52" />
                             <div className="text-4xl mx-2  font-bold  text-gray-50  block  text-left">
                                 {Math.round(temp2)}°C 
                                 <div className="inline-block ml-4 ">
@@ -240,10 +241,10 @@ export default function Home() {
                       to="/next"
                       onClick={()=>{localStorage.setItem("city","Mumbai")}}
                     >
-                        <button className="text-gray-300 w-64  mt-4 transform  hover:scale-105 bg-white shadow-xl   bg-cover bg-no-repeat z-10    rounded-xl ml-2  m-4  text-xl mr-2  "
+                        <button className="text-gray-300 w-80 md:w-64  mt-4 transform  hover:scale-105 bg-white shadow-xl   bg-cover bg-no-repeat z-10    rounded-xl ml-3 md:ml-2  m-4  text-xl mr-2  "
                         
                         >   
-                           <img src={Mumbai} alt="" className="rounded-t-xl h-52 w-full " />
+                           <img src={Mumbai} alt="" className="rounded-t-xl h-64 md:h-52 w-full " />
                             <div className="text-4xl  mx-2  font-bold  text-gray-900  block  text-left">
                                 {Math.round(temp3)}°C 
                                 <div className="inline-block ml-4 ">
@@ -261,10 +262,10 @@ export default function Home() {
                       to="/next"
                       onClick={()=>{localStorage.setItem("city","Chennai")}}
                     >
-                        <button className="text-gray-300 w-64  mt-4 transform  hover:scale-105 bg-gray-100 shadow-xl   bg-cover bg-no-repeat z-10    rounded-xl ml-2  m-4  text-xl mr-2  "
+                        <button className="text-gray-300 w-80 md:w-64  mt-4 transform  hover:scale-105 bg-gray-100 shadow-xl   bg-cover bg-no-repeat z-10    rounded-xl ml-3 md:ml-2  m-4  text-xl mr-2  "
                         
                         >   
-                           <img src={Chennai} alt="" className="rounded-t-xl h-52 w-full " />
+                           <img src={Chennai} alt="" className="rounded-t-xl h-64 md:h-52 w-full " />
                             <div className="text-4xl  mx-2  font-bold  text-gray-900  block  text-left">
                                 {Math.round(temp4)}°C 
                                 <div className="inline-block ml-4 ">
@@ -288,10 +289,10 @@ export default function Home() {
                       to="/next"
                       onClick={()=>{localStorage.setItem("city","Bangalore")}}
                     >
-                        <button className="text-gray-300 w-64  mt-4 transform  hover:scale-105 bg-green-600 shadow-xl   bg-cover bg-no-repeat z-10    rounded-xl ml-2  m-4  text-xl mr-2  "
+                        <button className="text-gray-300 w-80 md:w-64  mt-4 transform  hover:scale-105 bg-green-600 shadow-xl   bg-cover bg-no-repeat z-10    rounded-xl ml-3 md:ml-2  m-4  text-xl mr-2  "
                         
                         >   
-                           <img src={Banglore} alt="" className="rounded-t-xl h-52 w-full " />
+                           <img src={Banglore} alt="" className="rounded-t-xl h-64 md:h-52 w-full " />
                             <div className="text-4xl  mx-2  font-bold  text-gray-100  block  text-left">
                                 {Math.round(temp5)}°C 
                                 <div className="inline-block ml-4 ">
@@ -310,10 +311,10 @@ export default function Home() {
                       to="/next"
                       onClick={()=>{localStorage.setItem("city","Hyderabad")}}
                     >
-                        <button className="text-gray-300 w-64  mt-4 transform  hover:scale-105 bg-white shadow-xl   bg-cover bg-no-repeat z-10    rounded-xl ml-52  m-4  text-xl mr-2  "
+                        <button className="text-gray-300 w-80 md:w-64  mt-4 transform  hover:scale-105 bg-white shadow-xl   bg-cover bg-no-repeat z-10    rounded-xl ml-3 md:ml-52  m-4  text-xl mr-2 "
                         
                         >   
-                           <img src={Hyderabad} alt="" className="rounded-t-xl h-52 w-full " />
+                           <img src={Hyderabad} alt="" className="rounded-t-xl h-64 md:h-52 w-full " />
                             <div className="text-4xl  mx-2  font-bold  text-gray-900  block  text-left">
                                 {Math.round(temp6)}°C 
                                 <div className="inline-block ml-4 ">
@@ -332,10 +333,10 @@ export default function Home() {
                       to="/next"
                       onClick={()=>{localStorage.setItem("city","Ahmedabad")}}
                     >
-                        <button className="text-gray-300 w-64  mt-4 transform  hover:scale-105 bg-yellow-50 shadow-xl   bg-cover bg-no-repeat z-10    rounded-xl ml-2  m-4  text-xl mr-2  "
+                        <button className="text-gray-300 w-80 md:w-64  mt-4 transform  hover:scale-105 bg-yellow-50 shadow-xl   bg-cover bg-no-repeat z-10    rounded-xl ml-3 md:ml-2  m-4  text-xl mr-2  "
                         
                         >   
-                           <img src={Ahmedabad} alt="" className="rounded-t-xl h-52 w-full " />
+                           <img src={Ahmedabad} alt="" className="rounded-t-xl h-80 md:h-52 w-full " />
                             <div className="text-4xl  mx-2  font-bold  text-gray-900  block  text-left">
                                 {Math.round(temp7)}°C 
                                 <div className="inline-block ml-4 ">
@@ -353,10 +354,10 @@ export default function Home() {
                       to="/next"
                       onClick={()=>{localStorage.setItem("city","Jaipur")}}
                     >
-                        <button className="text-gray-300 w-64  mt-4 transform  hover:scale-105 bg-green-600 shadow-xl   bg-cover bg-no-repeat z-10    rounded-xl ml-2  m-4  text-xl mr-2  "
+                        <button className="text-gray-300 w-80 md:w-64  mt-4 transform  hover:scale-105 bg-green-600 shadow-xl   bg-cover bg-no-repeat z-10    rounded-xl ml-3 md:ml-2  m-4  text-xl mr-2  "
                         
                         >   
-                           <img src={Jaipur} alt="" className="rounded-t-xl h-52 w-full " />
+                           <img src={Jaipur} alt="" className="rounded-t-xl h-64 md:h-52 w-full " />
                             <div className="text-4xl  mx-2  font-bold  text-gray-100  block  text-left">
                                 {Math.round(temp8)}°C 
                                 <div className="inline-block ml-4 ">
@@ -374,10 +375,10 @@ export default function Home() {
                       to="/next"
                       onClick={()=>{localStorage.setItem("city","Srinagar")}}
                     >
-                        <button className="text-gray-300 w-64  mt-4 transform  hover:scale-105 bg-blue-500  shadow-xl   bg-cover bg-no-repeat z-10    rounded-xl ml-2  m-4  text-xl mr-2  "
+                        <button className="text-gray-300 w-80 md:w-64  mt-4 transform  hover:scale-105 bg-blue-500  shadow-xl   bg-cover bg-no-repeat z-10    rounded-xl ml-3 md:ml-2  m-4  text-xl mr-2  "
                         
                         >   
-                           <img src={Srinagar} alt="" className="rounded-t-xl h-52 w-full " />
+                           <img src={Srinagar} alt="" className="rounded-t-xl h-64 md:h-52 w-full " />
                             <div className="text-4xl  mx-2  font-bold  text-gray-100  block  text-left">
                             {Math.round(temp9)}°C 
                                 <div className="inline-block ml-4 ">
