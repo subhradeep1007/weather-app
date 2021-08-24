@@ -75,86 +75,86 @@ export default function Home() {
         
         
         
-        // axios
-        //     .post(
-        //         `https://api.openweathermap.org/data/2.5/onecall?lat=28.6667&lon=77.2167&exclude=hourly,minutely&units=metric&appid=${api_key}`
-        //     )
-        //     .then((res) => {
+        axios
+            .post(
+                `https://api.openweathermap.org/data/2.5/onecall?lat=28.6667&lon=77.2167&exclude=hourly,minutely&units=metric&appid=${api_key}`
+            )
+            .then((res) => {
                 
-        //         settemp1(res.data.current.temp);
-        //     });
+                settemp1(res.data.current.temp);
+            });
 
-        // axios
-        //     .post(
-        //         `https://api.openweathermap.org/data/2.5/onecall?lat=22.5697&lon=88.3697&exclude=hourly,minutely&units=metric&appid=${api_key}`
-        //     )
-        //     .then((res) => {
+        axios
+            .post(
+                `https://api.openweathermap.org/data/2.5/onecall?lat=22.5697&lon=88.3697&exclude=hourly,minutely&units=metric&appid=${api_key}`
+            )
+            .then((res) => {
               
-        //         settemp2(res.data.current.temp);
-        //     });
+                settemp2(res.data.current.temp);
+            });
         
-        //     axios
-        //     .post(
-        //         `https://api.openweathermap.org/data/2.5/onecall?lat=19.0144&lon=72.8479&exclude=hourly,minutely&units=metric&appid=${api_key}`
-        //     )
-        //     .then((res) => {
+            axios
+            .post(
+                `https://api.openweathermap.org/data/2.5/onecall?lat=19.0144&lon=72.8479&exclude=hourly,minutely&units=metric&appid=${api_key}`
+            )
+            .then((res) => {
              
-        //         settemp3(res.data.current.temp);
-        //     });
+                settemp3(res.data.current.temp);
+            });
         
-        //     axios
-        //     .post(
-        //         `https://api.openweathermap.org/data/2.5/onecall?lat=13.0878&lon=80.2785&exclude=hourly,minutely&units=metric&appid=${api_key}`
-        //     )
-        //     .then((res) => {
+            axios
+            .post(
+                `https://api.openweathermap.org/data/2.5/onecall?lat=13.0878&lon=80.2785&exclude=hourly,minutely&units=metric&appid=${api_key}`
+            )
+            .then((res) => {
              
-        //         settemp4(res.data.current.temp);
-        //     });
+                settemp4(res.data.current.temp);
+            });
         
-        //     axios
-        //     .post(
-        //         `https://api.openweathermap.org/data/2.5/onecall?lat=12.9762&lon=77.6033&exclude=hourly,minutely&units=metric&appid=${api_key}`
-        //     )
-        //     .then((res) => {
+            axios
+            .post(
+                `https://api.openweathermap.org/data/2.5/onecall?lat=12.9762&lon=77.6033&exclude=hourly,minutely&units=metric&appid=${api_key}`
+            )
+            .then((res) => {
                 
-        //         settemp5(res.data.current.temp);
-        //     });
+                settemp5(res.data.current.temp);
+            });
         
-        //     axios
-        //     .post(
-        //         `https://api.openweathermap.org/data/2.5/onecall?lat=17.3753&lon=78.4744&exclude=hourly,minutely&units=metric&appid=${api_key}`
-        //     )
-        //     .then((res) => {
+            axios
+            .post(
+                `https://api.openweathermap.org/data/2.5/onecall?lat=17.3753&lon=78.4744&exclude=hourly,minutely&units=metric&appid=${api_key}`
+            )
+            .then((res) => {
                 
-        //         settemp6(res.data.current.temp);
-        //     });
+                settemp6(res.data.current.temp);
+            });
         
-        //     axios
-        //     .post(
-        //         `https://api.openweathermap.org/data/2.5/onecall?lat=23.0333&lon=72.6167&exclude=hourly,minutely&units=metric&appid=${api_key}`
-        //     )
-        //     .then((res) => {
+            axios
+            .post(
+                `https://api.openweathermap.org/data/2.5/onecall?lat=23.0333&lon=72.6167&exclude=hourly,minutely&units=metric&appid=${api_key}`
+            )
+            .then((res) => {
               
-        //         settemp7(res.data.current.temp);
-        //     });
+                settemp7(res.data.current.temp);
+            });
         
-        //     axios
-        //     .post(
-        //         `https://api.openweathermap.org/data/2.5/onecall?lat=26.9167&lon=75.8167&exclude=hourly,minutely&units=metric&appid=${api_key}`
-        //     )
-        //     .then((res) => {
+            axios
+            .post(
+                `https://api.openweathermap.org/data/2.5/onecall?lat=26.9167&lon=75.8167&exclude=hourly,minutely&units=metric&appid=${api_key}`
+            )
+            .then((res) => {
                 
-        //         settemp8(res.data.current.temp);
-        //     });
+                settemp8(res.data.current.temp);
+            });
         
-        //     axios
-        //     .post(
-        //         `https://api.openweathermap.org/data/2.5/onecall?lat=34.0833&lon=74.8167&exclude=hourly,minutely&units=metric&appid=${api_key}`
-        //     )
-        //     .then((res) => {
+            axios
+            .post(
+                `https://api.openweathermap.org/data/2.5/onecall?lat=34.0833&lon=74.8167&exclude=hourly,minutely&units=metric&appid=${api_key}`
+            )
+            .then((res) => {
                 
-        //         settemp9(res.data.current.temp);
-        //     });
+                settemp9(res.data.current.temp);
+            });
 
     }, []);
 

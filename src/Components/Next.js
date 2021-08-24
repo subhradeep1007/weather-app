@@ -5,7 +5,7 @@ import { BsFillDropletFill } from "react-icons/bs";
 import { GiWhirlwind } from "react-icons/gi";
 import { WiSunrise } from "react-icons/wi";
 import { WiSunset } from "react-icons/wi";
-import { AiFillHome, AiOutlineHome } from "react-icons/ai";
+import { AiFillHome} from "react-icons/ai";
 import { MdDateRange } from "react-icons/md";
 import { MdWbSunny } from "react-icons/md";
 import Clouds from "../Images/Delhi2.png";
@@ -17,6 +17,7 @@ import { Link } from "react-router-dom";
 import { FcSearch } from "react-icons/fc";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import {HiOutlineEmojiSad} from "react-icons/hi"
 
 export default function Next() {
 
@@ -71,6 +72,8 @@ export default function Next() {
   const [data7, setdata7] = useState();
   const [data8, setdata8] = useState();
 
+  const [error, seterror] = useState()
+
   const date = (time) => {
     let dateObj = new Date(time * 1000);
     console.log("date", dateObj);
@@ -86,25 +89,47 @@ export default function Next() {
     settimeArray((oldArray) => [...oldArray, ans]);
   };
 
-  const [unixTimestamp, setunixTimestamp] = useState();
+ 
   const api_key = "81d81d43df7ba4aed9c8d16035226ec8";
   useEffect(() => {
-    axios
-      .post(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${api_key}`
-      )
-      .then((res) => {
-        console.log(res.data);
-        // console.log(res.data);
-        // console.log(res.data.coord.lat)
-        // console.log(res.data)
-        // setlat(res.data.coord.lat);
-        // localStorage.setItem("lat",res.data.coord.lat)
-        // localStorage.setItem("long",res.data.coord.lon)
-        // setlong(res.data.coord.lon);
+    // axios
+    //   .post(
+        
+    //   )
+    //   .then((res) => {
+    //     console.log(res.data);
+    //     // axios.post(
+    //     //     `https://api.openweathermap.org/data/2.5/onecall?lat=${res.data.coord.lat}&lon=${res.data.coord.lon}&exclude=hourly,minutely&units=metric&appid=${api_key}`
+    //     //   )
+    //     //   .then((res1) => {
+    //     //     settimeArray([]);
+    //     //     console.log(city);
+    //     //     console.log("city data=", res1.data);
+    //     //     setdata1(res1.data.current);
+    //     //     setdata0(res1.data.daily[0]);
 
-        axios
-          .post(
+    //     //     setdata2(res1.data.daily[1]);
+    //     //     setdata3(res1.data.daily[2]);
+    //     //     setdata4(res1.data.daily[3]);
+    //     //     setdata5(res1.data.daily[4]);
+    //     //     setdata6(res1.data.daily[5]);
+    //     //     setdata7(res1.data.daily[6]);
+    //     //     setdata8(res1.data.daily[7]);
+
+    //     //     for (var i = 0; i < 8; i++) {
+    //     //       date(res1.data.daily[i].sunrise);
+    //     //       date(res1.data.daily[i].sunset);
+    //     //     }
+
+            
+    //     //   });
+          
+    //   });
+
+      axios.post(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${api_key}`)
+      .then((res)=>{
+        console.log(res.data);
+        axios.post(
             `https://api.openweathermap.org/data/2.5/onecall?lat=${res.data.coord.lat}&lon=${res.data.coord.lon}&exclude=hourly,minutely&units=metric&appid=${api_key}`
           )
           .then((res1) => {
@@ -127,18 +152,34 @@ export default function Next() {
               date(res1.data.daily[i].sunset);
             }
 
-            setunixTimestamp(res1.data.current.dt);
+            
           });
-      });
+          seterror(false);
+          
+      } )
+      .catch((error)=>{
+        console.log("error",error.data);
+        seterror(true);
+
+      })
+      
+      
+      
+      
+
+
 
   }, [city]);
 
   return (
-    <div>
-      <div
+    <div className="">
+      {
+        error == false ?(
+          <div
         className=" googlefont1 bg-gradient-to-t px-2 from-green-400 to-blue-200
          h-full md:h-screen w-screen md:flex "
       >
+
         <div className="w-full md:w-2/5 h-full rounded-lg shadow-2xl py-1 md:py-8 ">
           <Link to="/">
             <button className=" ml-2 md:ml-4 bg-transparent border-2 border-gray-200 inline-block rounded-full  p-2 py-1">
@@ -175,7 +216,7 @@ export default function Next() {
 
           </Link>
 
-          
+
 
           <div className="text-5xl font-medium mt-5 md:mt-0 text-gray-800 text-center ">
             Today
@@ -307,342 +348,342 @@ export default function Next() {
 
 
 
-          
 
-            <div className=" md:hidden w-full mt-0  ">
 
-              <div className=" bg-transparent   px-2 inline-block mb-4  font-extrabold text-2xl text-gray-400 mx-3 ">
-                Weekly
-                <div className=" ml-2 text-2xl inline-block text-gray-900 ">
-                  Weather Forcast
-                </div>
+          <div className=" md:hidden w-full mt-0  ">
+
+            <div className=" bg-transparent   px-2 inline-block mb-4  font-extrabold text-2xl text-gray-400 mx-3 ">
+              Weekly
+              <div className=" ml-2 text-2xl inline-block text-gray-900 ">
+                Weather Forcast
               </div>
-              <Carousel responsive={responsive} className=" md:hidden">
+            </div>
+            <Carousel responsive={responsive} className=" md:hidden">
 
-                <div className="text-center flex-col bg-transparent   shadow-md mx-5 mt-2 rounded-2xl mb-2  h-52">
+              <div className="text-center flex-col bg-transparent   shadow-md mx-5 mt-2 rounded-2xl mb-2  h-52">
 
-                  <div className=" inline-block  mx-auto text-3xl w-56 h-10 mt-2  overflow-hidden text-gray-100">
-                    <div className="inline-block text-gray-400">
-                      <MdDateRange />{" "}
-                    </div>{" "}
-                    <Moment unix>{data2 ? Math.round(data2.dt) : ""}</Moment>
-                  </div>
-
-                  <div className=" w-1/3 text-gray-500 text-2xl inline-block  h-8 ">
-                    <div className="inline-block ml-2 mr-1 text-xl text-blue-400 ">
-                      <BsFillDropletFill size="1.5em" />
-                    </div>
-                    {data2 ? Math.round(data2.humidity) : ""}%
-                  </div>
-
-                  <div className="w-1/2 text-gray-500 inline-block   text-2xl  h-8 ">
-                    <div className=" mr-0 text-green-200 inline-block">
-                      <FaFeather />{" "}
-                    </div>{" "}
-                    {data2 ? Math.round(data2.temp.min) : ""}°C/
-                    {data2 ? Math.round(data2.temp.max) : ""}°C
-                  </div>
-
-                  <div className="w-full mt-2 text-gray-500  text-2xl inline-block   h-8">
-                    <div className="inline-block ml-2 text-yellow-600 ">
-                      <WiSunrise size="1.5em" />
-                    </div>
-
-                    {timeArray[2]} AM
-
-                    <div className=" inline-block ml-2 text-yellow-600 ">
-                      <WiSunset size="1.5em" />
-                    </div>{" "}
-                    {timeArray[3]} PM
-                  </div>
-                  <div className="w-full text-gray-500 inline-block mx-auto mt-4 text-2xl  h-8 ">
-                    <div className="inline-block mr-2 ml-2  text-blue-600 ">
-                      <GiWhirlwind size="1em" />
-                    </div>
-                    {data2 ? data2.wind_speed : ""}Km/h
-                  </div>
-
+                <div className=" inline-block  mx-auto text-3xl w-56 h-10 mt-2  overflow-hidden text-gray-100">
+                  <div className="inline-block text-gray-400">
+                    <MdDateRange />{" "}
+                  </div>{" "}
+                  <Moment unix>{data2 ? Math.round(data2.dt) : ""}</Moment>
                 </div>
 
-                <div className="text-center">   <div className="text-center flex-col bg-transparent   shadow-md mx-5 mt-2 rounded-2xl mb-2  h-52">
+                <div className=" w-1/3 text-gray-500 text-2xl inline-block  h-8 ">
+                  <div className="inline-block ml-2 mr-1 text-xl text-blue-400 ">
+                    <BsFillDropletFill size="1.5em" />
+                  </div>
+                  {data2 ? Math.round(data2.humidity) : ""}%
+                </div>
 
-                  <div className=" inline-block  mx-auto text-3xl w-56 h-10 mt-2  overflow-hidden text-gray-100">
-                    <div className="inline-block text-gray-400">
-                      <MdDateRange />{" "}
-                    </div>{" "}
-                    <Moment unix>{data3 ? Math.round(data3.dt) : ""}</Moment>
+                <div className="w-1/2 text-gray-500 inline-block   text-2xl  h-8 ">
+                  <div className=" mr-0 text-green-200 inline-block">
+                    <FaFeather />{" "}
+                  </div>{" "}
+                  {data2 ? Math.round(data2.temp.min) : ""}°C/
+                  {data2 ? Math.round(data2.temp.max) : ""}°C
+                </div>
+
+                <div className="w-full mt-2 text-gray-500  text-2xl inline-block   h-8">
+                  <div className="inline-block ml-2 text-yellow-600 ">
+                    <WiSunrise size="1.5em" />
                   </div>
 
-                  <div className=" w-1/3 text-gray-500 text-2xl inline-block  h-8 ">
-                    <div className="inline-block ml-2 mr-1 text-xl text-blue-400 ">
-                      <BsFillDropletFill size="1.5em" />
-                    </div>
-                    {data3 ? Math.round(data3.humidity) : ""}%
+                  {timeArray[2]} AM
+
+                  <div className=" inline-block ml-2 text-yellow-600 ">
+                    <WiSunset size="1.5em" />
+                  </div>{" "}
+                  {timeArray[3]} PM
+                </div>
+                <div className="w-full text-gray-500 inline-block mx-auto mt-4 text-2xl  h-8 ">
+                  <div className="inline-block mr-2 ml-2  text-blue-600 ">
+                    <GiWhirlwind size="1em" />
+                  </div>
+                  {data2 ? data2.wind_speed : ""}Km/h
+                </div>
+
+              </div>
+
+              <div className="text-center">   <div className="text-center flex-col bg-transparent   shadow-md mx-5 mt-2 rounded-2xl mb-2  h-52">
+
+                <div className=" inline-block  mx-auto text-3xl w-56 h-10 mt-2  overflow-hidden text-gray-100">
+                  <div className="inline-block text-gray-400">
+                    <MdDateRange />{" "}
+                  </div>{" "}
+                  <Moment unix>{data3 ? Math.round(data3.dt) : ""}</Moment>
+                </div>
+
+                <div className=" w-1/3 text-gray-500 text-2xl inline-block  h-8 ">
+                  <div className="inline-block ml-2 mr-1 text-xl text-blue-400 ">
+                    <BsFillDropletFill size="1.5em" />
+                  </div>
+                  {data3 ? Math.round(data3.humidity) : ""}%
+                </div>
+
+                <div className="w-1/2 text-gray-500 inline-block   text-2xl  h-8 ">
+                  <div className=" mr-0 text-green-200 inline-block">
+                    <FaFeather />{" "}
+                  </div>{" "}
+                  {data3 ? Math.round(data3.temp.min) : ""}°C/
+                  {data3 ? Math.round(data3.temp.max) : ""}°C
+                </div>
+
+                <div className="w-full mt-2 text-gray-500  text-2xl inline-block   h-8">
+                  <div className="inline-block ml-2 text-yellow-600 ">
+                    <WiSunrise size="1.5em" />
                   </div>
 
-                  <div className="w-1/2 text-gray-500 inline-block   text-2xl  h-8 ">
-                    <div className=" mr-0 text-green-200 inline-block">
-                      <FaFeather />{" "}
-                    </div>{" "}
-                    {data3 ? Math.round(data3.temp.min) : ""}°C/
-                    {data3 ? Math.round(data3.temp.max) : ""}°C
+                  {timeArray[4]} AM
+
+                  <div className=" inline-block ml-2 text-yellow-600 ">
+                    <WiSunset size="1.5em" />
+                  </div>{" "}
+                  {timeArray[5]} PM
+                </div>
+                <div className="w-full text-gray-500 inline-block mx-auto mt-4 text-2xl  h-8 ">
+                  <div className="inline-block mr-2 ml-2  text-blue-600 ">
+                    <GiWhirlwind size="1em" />
+                  </div>
+                  {data3 ? data3.wind_speed : ""}Km/h
+                </div>
+
+              </div></div>
+              <div className="text-center">   <div className="text-center flex-col bg-transparent   shadow-md mx-5 mt-2 rounded-2xl mb-2  h-52">
+
+                <div className=" inline-block  mx-auto text-3xl w-56 h-10 mt-2  overflow-hidden text-gray-100">
+                  <div className="inline-block text-gray-400">
+                    <MdDateRange />{" "}
+                  </div>{" "}
+                  <Moment unix>{data4 ? Math.round(data4.dt) : ""}</Moment>
+                </div>
+
+                <div className=" w-1/3 text-gray-500 text-2xl inline-block  h-8 ">
+                  <div className="inline-block ml-2 mr-1 text-xl text-blue-400 ">
+                    <BsFillDropletFill size="1.5em" />
+                  </div>
+                  {data4 ? Math.round(data4.humidity) : ""}%
+                </div>
+
+                <div className="w-1/2 text-gray-500 inline-block   text-2xl  h-8 ">
+                  <div className=" mr-0 text-green-200 inline-block">
+                    <FaFeather />{" "}
+                  </div>{" "}
+                  {data4 ? Math.round(data4.temp.min) : ""}°C/
+                  {data4 ? Math.round(data4.temp.max) : ""}°C
+                </div>
+
+                <div className="w-full mt-2 text-gray-500  text-2xl inline-block   h-8">
+                  <div className="inline-block ml-2 text-yellow-600 ">
+                    <WiSunrise size="1.5em" />
                   </div>
 
-                  <div className="w-full mt-2 text-gray-500  text-2xl inline-block   h-8">
-                    <div className="inline-block ml-2 text-yellow-600 ">
-                      <WiSunrise size="1.5em" />
-                    </div>
+                  {timeArray[6]} AM
 
-                    {timeArray[4]} AM
-
-                    <div className=" inline-block ml-2 text-yellow-600 ">
-                      <WiSunset size="1.5em" />
-                    </div>{" "}
-                    {timeArray[5]} PM
+                  <div className=" inline-block ml-2 text-yellow-600 ">
+                    <WiSunset size="1.5em" />
+                  </div>{" "}
+                  {timeArray[7]} PM
+                </div>
+                <div className="w-full text-gray-500 inline-block mx-auto mt-4 text-2xl  h-8 ">
+                  <div className="inline-block mr-2 ml-2  text-blue-600 ">
+                    <GiWhirlwind size="1em" />
                   </div>
-                  <div className="w-full text-gray-500 inline-block mx-auto mt-4 text-2xl  h-8 ">
-                    <div className="inline-block mr-2 ml-2  text-blue-600 ">
-                      <GiWhirlwind size="1em" />
-                    </div>
-                    {data3 ? data3.wind_speed : ""}Km/h
+                  {data4 ? data4.wind_speed : ""}Km/h
+                </div>
+
+              </div></div>
+              <div className="text-center">   <div className="text-center flex-col bg-transparent   shadow-md mx-5 mt-2 rounded-2xl mb-2  h-52">
+
+                <div className=" inline-block  mx-auto text-3xl w-56 h-10 mt-2  overflow-hidden text-gray-100">
+                  <div className="inline-block text-gray-400">
+                    <MdDateRange />{" "}
+                  </div>{" "}
+                  <Moment unix>{data5 ? Math.round(data5.dt) : ""}</Moment>
+                </div>
+
+                <div className=" w-1/3 text-gray-500 text-2xl inline-block  h-8 ">
+                  <div className="inline-block ml-2 mr-1 text-xl text-blue-400 ">
+                    <BsFillDropletFill size="1.5em" />
                   </div>
+                  {data5 ? Math.round(data5.humidity) : ""}%
+                </div>
 
-                </div></div>
-                <div className="text-center">   <div className="text-center flex-col bg-transparent   shadow-md mx-5 mt-2 rounded-2xl mb-2  h-52">
+                <div className="w-1/2 text-gray-500 inline-block   text-2xl  h-8 ">
+                  <div className=" mr-0 text-green-200 inline-block">
+                    <FaFeather />{" "}
+                  </div>{" "}
+                  {data5 ? Math.round(data5.temp.min) : ""}°C/
+                  {data5 ? Math.round(data5.temp.max) : ""}°C
+                </div>
 
-                  <div className=" inline-block  mx-auto text-3xl w-56 h-10 mt-2  overflow-hidden text-gray-100">
-                    <div className="inline-block text-gray-400">
-                      <MdDateRange />{" "}
-                    </div>{" "}
-                    <Moment unix>{data4 ? Math.round(data4.dt) : ""}</Moment>
-                  </div>
-
-                  <div className=" w-1/3 text-gray-500 text-2xl inline-block  h-8 ">
-                    <div className="inline-block ml-2 mr-1 text-xl text-blue-400 ">
-                      <BsFillDropletFill size="1.5em" />
-                    </div>
-                    {data4 ? Math.round(data4.humidity) : ""}%
-                  </div>
-
-                  <div className="w-1/2 text-gray-500 inline-block   text-2xl  h-8 ">
-                    <div className=" mr-0 text-green-200 inline-block">
-                      <FaFeather />{" "}
-                    </div>{" "}
-                    {data4 ? Math.round(data4.temp.min) : ""}°C/
-                    {data4 ? Math.round(data4.temp.max) : ""}°C
-                  </div>
-
-                  <div className="w-full mt-2 text-gray-500  text-2xl inline-block   h-8">
-                    <div className="inline-block ml-2 text-yellow-600 ">
-                      <WiSunrise size="1.5em" />
-                    </div>
-
-                    {timeArray[6]} AM
-
-                    <div className=" inline-block ml-2 text-yellow-600 ">
-                      <WiSunset size="1.5em" />
-                    </div>{" "}
-                    {timeArray[7]} PM
-                  </div>
-                  <div className="w-full text-gray-500 inline-block mx-auto mt-4 text-2xl  h-8 ">
-                    <div className="inline-block mr-2 ml-2  text-blue-600 ">
-                      <GiWhirlwind size="1em" />
-                    </div>
-                    {data4 ? data4.wind_speed : ""}Km/h
+                <div className="w-full mt-2 text-gray-500  text-2xl inline-block   h-8">
+                  <div className="inline-block ml-2 text-yellow-600 ">
+                    <WiSunrise size="1.5em" />
                   </div>
 
-                </div></div>
-                <div className="text-center">   <div className="text-center flex-col bg-transparent   shadow-md mx-5 mt-2 rounded-2xl mb-2  h-52">
+                  {timeArray[8]} AM
 
-                  <div className=" inline-block  mx-auto text-3xl w-56 h-10 mt-2  overflow-hidden text-gray-100">
-                    <div className="inline-block text-gray-400">
-                      <MdDateRange />{" "}
-                    </div>{" "}
-                    <Moment unix>{data5 ? Math.round(data5.dt) : ""}</Moment>
+                  <div className=" inline-block ml-2 text-yellow-600 ">
+                    <WiSunset size="1.5em" />
+                  </div>{" "}
+                  {timeArray[9]} PM
+                </div>
+                <div className="w-full text-gray-500 inline-block mx-auto mt-4 text-2xl  h-8 ">
+                  <div className="inline-block mr-2 ml-2  text-blue-600 ">
+                    <GiWhirlwind size="1em" />
+                  </div>
+                  {data5 ? data5.wind_speed : ""}Km/h
+                </div>
+
+              </div></div>
+              <div className="text-center">   <div className="text-center flex-col bg-transparent   shadow-md mx-5 mt-2 rounded-2xl mb-2  h-52">
+
+                <div className=" inline-block  mx-auto text-3xl w-56 h-10 mt-2  overflow-hidden text-gray-100">
+                  <div className="inline-block text-gray-400">
+                    <MdDateRange />{" "}
+                  </div>{" "}
+                  <Moment unix>{data6 ? Math.round(data6.dt) : ""}</Moment>
+                </div>
+
+                <div className=" w-1/3 text-gray-500 text-2xl inline-block  h-8 ">
+                  <div className="inline-block ml-2 mr-1 text-xl text-blue-400 ">
+                    <BsFillDropletFill size="1.5em" />
+                  </div>
+                  {data6 ? Math.round(data6.humidity) : ""}%
+                </div>
+
+                <div className="w-1/2 text-gray-500 inline-block   text-2xl  h-8 ">
+                  <div className=" mr-0 text-green-200 inline-block">
+                    <FaFeather />{" "}
+                  </div>{" "}
+                  {data6 ? Math.round(data6.temp.min) : ""}°C/
+                  {data6 ? Math.round(data6.temp.max) : ""}°C
+                </div>
+
+                <div className="w-full mt-2 text-gray-500  text-2xl inline-block   h-8">
+                  <div className="inline-block ml-2 text-yellow-600 ">
+                    <WiSunrise size="1.5em" />
                   </div>
 
-                  <div className=" w-1/3 text-gray-500 text-2xl inline-block  h-8 ">
-                    <div className="inline-block ml-2 mr-1 text-xl text-blue-400 ">
-                      <BsFillDropletFill size="1.5em" />
-                    </div>
-                    {data5 ? Math.round(data5.humidity) : ""}%
+                  {timeArray[10]} AM
+
+                  <div className=" inline-block ml-2 text-yellow-600 ">
+                    <WiSunset size="1.5em" />
+                  </div>{" "}
+                  {timeArray[11]} PM
+                </div>
+                <div className="w-full text-gray-500 inline-block mx-auto mt-4 text-2xl  h-8 ">
+                  <div className="inline-block mr-2 ml-2  text-blue-600 ">
+                    <GiWhirlwind size="1em" />
+                  </div>
+                  {data6 ? data6.wind_speed : ""}Km/h
+                </div>
+
+              </div></div>
+              <div className="text-center">   <div className="text-center flex-col bg-transparent   shadow-md mx-5 mt-2 rounded-2xl mb-2  h-52">
+
+                <div className=" inline-block  mx-auto text-3xl w-56 h-10 mt-2  overflow-hidden text-gray-100">
+                  <div className="inline-block text-gray-400">
+                    <MdDateRange />{" "}
+                  </div>{" "}
+                  <Moment unix>{data7 ? Math.round(data7.dt) : ""}</Moment>
+                </div>
+
+                <div className=" w-1/3 text-gray-500 text-2xl inline-block  h-8 ">
+                  <div className="inline-block ml-2 mr-1 text-xl text-blue-400 ">
+                    <BsFillDropletFill size="1.5em" />
+                  </div>
+                  {data7 ? Math.round(data7.humidity) : ""}%
+                </div>
+
+                <div className="w-1/2 text-gray-500 inline-block   text-2xl  h-8 ">
+                  <div className=" mr-0 text-green-200 inline-block">
+                    <FaFeather />{" "}
+                  </div>{" "}
+                  {data7 ? Math.round(data7.temp.min) : ""}°C/
+                  {data7 ? Math.round(data7.temp.max) : ""}°C
+                </div>
+
+                <div className="w-full mt-2 text-gray-500  text-2xl inline-block   h-8">
+                  <div className="inline-block ml-2 text-yellow-600 ">
+                    <WiSunrise size="1.5em" />
                   </div>
 
-                  <div className="w-1/2 text-gray-500 inline-block   text-2xl  h-8 ">
-                    <div className=" mr-0 text-green-200 inline-block">
-                      <FaFeather />{" "}
-                    </div>{" "}
-                    {data5 ? Math.round(data5.temp.min) : ""}°C/
-                    {data5 ? Math.round(data5.temp.max) : ""}°C
+                  {timeArray[12]} AM
+
+                  <div className=" inline-block ml-2 text-yellow-600 ">
+                    <WiSunset size="1.5em" />
+                  </div>{" "}
+                  {timeArray[13]} PM
+                </div>
+                <div className="w-full text-gray-500 inline-block mx-auto mt-4 text-2xl  h-8 ">
+                  <div className="inline-block mr-2 ml-2  text-blue-600 ">
+                    <GiWhirlwind size="1em" />
+                  </div>
+                  {data7 ? data7.wind_speed : ""}Km/h
+                </div>
+
+              </div></div>
+              <div className="text-center">   <div className="text-center flex-col bg-transparent   shadow-md mx-5 mt-2 rounded-2xl mb-2  h-52">
+
+                <div className=" inline-block  mx-auto text-3xl w-56 h-10 mt-2  overflow-hidden text-gray-100">
+                  <div className="inline-block text-gray-400">
+                    <MdDateRange />{" "}
+                  </div>{" "}
+                  <Moment unix>{data8 ? Math.round(data8.dt) : ""}</Moment>
+                </div>
+
+                <div className=" w-1/3 text-gray-500 text-2xl inline-block  h-8 ">
+                  <div className="inline-block ml-2 mr-1 text-xl text-blue-400 ">
+                    <BsFillDropletFill size="1.5em" />
+                  </div>
+                  {data8 ? Math.round(data8.humidity) : ""}%
+                </div>
+
+                <div className="w-1/2 text-gray-500 inline-block   text-2xl  h-8 ">
+                  <div className=" mr-0 text-green-200 inline-block">
+                    <FaFeather />{" "}
+                  </div>{" "}
+                  {data8 ? Math.round(data8.temp.min) : ""}°C/
+                  {data8 ? Math.round(data8.temp.max) : ""}°C
+                </div>
+
+                <div className="w-full mt-2 text-gray-500  text-2xl inline-block   h-8">
+                  <div className="inline-block ml-2 text-yellow-600 ">
+                    <WiSunrise size="1.5em" />
                   </div>
 
-                  <div className="w-full mt-2 text-gray-500  text-2xl inline-block   h-8">
-                    <div className="inline-block ml-2 text-yellow-600 ">
-                      <WiSunrise size="1.5em" />
-                    </div>
+                  {timeArray[14]} AM
 
-                    {timeArray[8]} AM
-
-                    <div className=" inline-block ml-2 text-yellow-600 ">
-                      <WiSunset size="1.5em" />
-                    </div>{" "}
-                    {timeArray[9]} PM
+                  <div className=" inline-block ml-2 text-yellow-600 ">
+                    <WiSunset size="1.5em" />
+                  </div>{" "}
+                  {timeArray[15]} PM
+                </div>
+                <div className="w-full text-gray-500 inline-block mx-auto mt-4 text-2xl  h-8 ">
+                  <div className="inline-block mr-2 ml-2  text-blue-600 ">
+                    <GiWhirlwind size="1em" />
                   </div>
-                  <div className="w-full text-gray-500 inline-block mx-auto mt-4 text-2xl  h-8 ">
-                    <div className="inline-block mr-2 ml-2  text-blue-600 ">
-                      <GiWhirlwind size="1em" />
-                    </div>
-                    {data5 ? data5.wind_speed : ""}Km/h
-                  </div>
+                  {data8 ? data8.wind_speed : ""}Km/h
+                </div>
 
-                </div></div>
-                <div className="text-center">   <div className="text-center flex-col bg-transparent   shadow-md mx-5 mt-2 rounded-2xl mb-2  h-52">
+              </div></div>
+            </Carousel>
+          </div>
 
-                  <div className=" inline-block  mx-auto text-3xl w-56 h-10 mt-2  overflow-hidden text-gray-100">
-                    <div className="inline-block text-gray-400">
-                      <MdDateRange />{" "}
-                    </div>{" "}
-                    <Moment unix>{data6 ? Math.round(data6.dt) : ""}</Moment>
-                  </div>
+          <div>
 
-                  <div className=" w-1/3 text-gray-500 text-2xl inline-block  h-8 ">
-                    <div className="inline-block ml-2 mr-1 text-xl text-blue-400 ">
-                      <BsFillDropletFill size="1.5em" />
-                    </div>
-                    {data6 ? Math.round(data6.humidity) : ""}%
-                  </div>
+          </div>
 
-                  <div className="w-1/2 text-gray-500 inline-block   text-2xl  h-8 ">
-                    <div className=" mr-0 text-green-200 inline-block">
-                      <FaFeather />{" "}
-                    </div>{" "}
-                    {data6 ? Math.round(data6.temp.min) : ""}°C/
-                    {data6 ? Math.round(data6.temp.max) : ""}°C
-                  </div>
+          <div className=" md:hidden ml-5 mt-5 text-2xl text-gray-400 font-extrabold ">
+            Frequently Searched
+          </div>
+          <div className="ml-5 md:hidden w-12 mt-1 h-1 bg-gray-500 rounded-lg">
 
-                  <div className="w-full mt-2 text-gray-500  text-2xl inline-block   h-8">
-                    <div className="inline-block ml-2 text-yellow-600 ">
-                      <WiSunrise size="1.5em" />
-                    </div>
+          </div>
 
-                    {timeArray[10]} AM
-
-                    <div className=" inline-block ml-2 text-yellow-600 ">
-                      <WiSunset size="1.5em" />
-                    </div>{" "}
-                    {timeArray[11]} PM
-                  </div>
-                  <div className="w-full text-gray-500 inline-block mx-auto mt-4 text-2xl  h-8 ">
-                    <div className="inline-block mr-2 ml-2  text-blue-600 ">
-                      <GiWhirlwind size="1em" />
-                    </div>
-                    {data6 ? data6.wind_speed : ""}Km/h
-                  </div>
-
-                </div></div>
-                <div className="text-center">   <div className="text-center flex-col bg-transparent   shadow-md mx-5 mt-2 rounded-2xl mb-2  h-52">
-
-                  <div className=" inline-block  mx-auto text-3xl w-56 h-10 mt-2  overflow-hidden text-gray-100">
-                    <div className="inline-block text-gray-400">
-                      <MdDateRange />{" "}
-                    </div>{" "}
-                    <Moment unix>{data7 ? Math.round(data7.dt) : ""}</Moment>
-                  </div>
-
-                  <div className=" w-1/3 text-gray-500 text-2xl inline-block  h-8 ">
-                    <div className="inline-block ml-2 mr-1 text-xl text-blue-400 ">
-                      <BsFillDropletFill size="1.5em" />
-                    </div>
-                    {data7 ? Math.round(data7.humidity) : ""}%
-                  </div>
-
-                  <div className="w-1/2 text-gray-500 inline-block   text-2xl  h-8 ">
-                    <div className=" mr-0 text-green-200 inline-block">
-                      <FaFeather />{" "}
-                    </div>{" "}
-                    {data7 ? Math.round(data7.temp.min) : ""}°C/
-                    {data7 ? Math.round(data7.temp.max) : ""}°C
-                  </div>
-
-                  <div className="w-full mt-2 text-gray-500  text-2xl inline-block   h-8">
-                    <div className="inline-block ml-2 text-yellow-600 ">
-                      <WiSunrise size="1.5em" />
-                    </div>
-
-                    {timeArray[12]} AM
-
-                    <div className=" inline-block ml-2 text-yellow-600 ">
-                      <WiSunset size="1.5em" />
-                    </div>{" "}
-                    {timeArray[13]} PM
-                  </div>
-                  <div className="w-full text-gray-500 inline-block mx-auto mt-4 text-2xl  h-8 ">
-                    <div className="inline-block mr-2 ml-2  text-blue-600 ">
-                      <GiWhirlwind size="1em" />
-                    </div>
-                    {data7 ? data7.wind_speed : ""}Km/h
-                  </div>
-
-                </div></div>
-                <div className="text-center">   <div className="text-center flex-col bg-transparent   shadow-md mx-5 mt-2 rounded-2xl mb-2  h-52">
-
-                  <div className=" inline-block  mx-auto text-3xl w-56 h-10 mt-2  overflow-hidden text-gray-100">
-                    <div className="inline-block text-gray-400">
-                      <MdDateRange />{" "}
-                    </div>{" "}
-                    <Moment unix>{data8 ? Math.round(data8.dt) : ""}</Moment>
-                  </div>
-
-                  <div className=" w-1/3 text-gray-500 text-2xl inline-block  h-8 ">
-                    <div className="inline-block ml-2 mr-1 text-xl text-blue-400 ">
-                      <BsFillDropletFill size="1.5em" />
-                    </div>
-                    {data8 ? Math.round(data8.humidity) : ""}%
-                  </div>
-
-                  <div className="w-1/2 text-gray-500 inline-block   text-2xl  h-8 ">
-                    <div className=" mr-0 text-green-200 inline-block">
-                      <FaFeather />{" "}
-                    </div>{" "}
-                    {data8 ? Math.round(data8.temp.min) : ""}°C/
-                    {data8 ? Math.round(data8.temp.max) : ""}°C
-                  </div>
-
-                  <div className="w-full mt-2 text-gray-500  text-2xl inline-block   h-8">
-                    <div className="inline-block ml-2 text-yellow-600 ">
-                      <WiSunrise size="1.5em" />
-                    </div>
-
-                    {timeArray[14]} AM
-
-                    <div className=" inline-block ml-2 text-yellow-600 ">
-                      <WiSunset size="1.5em" />
-                    </div>{" "}
-                    {timeArray[15]} PM
-                  </div>
-                  <div className="w-full text-gray-500 inline-block mx-auto mt-4 text-2xl  h-8 ">
-                    <div className="inline-block mr-2 ml-2  text-blue-600 ">
-                      <GiWhirlwind size="1em" />
-                    </div>
-                    {data8 ? data8.wind_speed : ""}Km/h
-                  </div>
-
-                </div></div>
-              </Carousel>
-            </div>
-
-           <div>
-
-           </div>
-            
-            <div className=" md:hidden ml-5 mt-5 text-2xl text-gray-400 font-extrabold ">
-                Frequently Searched
-            </div>
-            <div className="ml-5 md:hidden w-12 mt-1 h-1 bg-gray-500 rounded-lg">
-
-            </div>
-           
-            <Link
+          <Link
             to="/next"
             onClick={() => {
               localStorage.setItem("city", "Delhi");
@@ -708,11 +749,11 @@ export default function Next() {
 
 
           <div className=" invisible md:visible bg-transparent   px-2 inline-block mb-2  font-extrabold text-2xl text-gray-400 mx-3 ">
-                Weekly
-                <div className=" ml-2 text-2xl inline-block text-gray-900 ">
-                  Weather Forcast
-                </div>
-              </div>
+            Weekly
+            <div className=" ml-2 text-2xl inline-block text-gray-900 ">
+              Weather Forcast
+            </div>
+          </div>
 
 
 
@@ -1002,33 +1043,40 @@ export default function Next() {
             </div>
           </div>
 
-          {/* <div className="block  w-24 h-6 overflow-hidden">
-                          <Moment unix>{data2?(Math.round(data2.dt)):""}</Moment>
-                        </div>
-                        <div className="block  w-24 h-6 overflow-hidden">
-                          <Moment unix>{unixTimestamp}</Moment>
-                        </div>
-                        <div className="block  w-24 h-6 overflow-hidden">
-                          <Moment unix>{unixTimestamp}</Moment>
-                        </div>
-                        <div className="block  w-24 h-6 overflow-hidden">
-                          <Moment unix>{unixTimestamp}</Moment>
-                        </div>
-                        <div className="block  w-24 h-6 overflow-hidden">
-                          <Moment unix>{unixTimestamp}</Moment>
-                        </div>
-                        <div className="block  w-24 h-6 overflow-hidden">
-                          <Moment unix>{unixTimestamp}</Moment>
-                        </div>
-                        <div className="block  w-24 h-6 overflow-hidden">
-                          <Moment unix>{unixTimestamp}</Moment>
-                        </div> */}
+          
 
           <table>
             <th></th>
           </table>
         </div>
       </div>
+        ):(
+          <div className="googlefont1 inline-block text-center justify-center align-middle my-auto bg-gradient-to-t px-2 from-green-400 to-blue-200 h-screen w-screen">
+            <div className=" inline-block  text-4xl font-extrabold   my-72 h-16  ">
+            Sorry! No such City found 
+            <div className=" inline-block relative top-5 text-yellow-700">
+            <HiOutlineEmojiSad size="2em" />
+            </div>
+            
+            <Link
+             to="/">
+             <div className="   mt-3  ">
+               <div className="inline-block  rounded-full p-2 border-2 transform hover:scale-125 border-gray-400 shadow-lg   ">
+               <AiFillHome size="1.5em"/>
+               </div>
+              
+            </div>
+
+            </Link>
+            
+            </div>
+            
+
+            
+          </div>
+        )
+      }
+      
     </div>
   );
 }
