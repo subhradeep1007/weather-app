@@ -136,10 +136,10 @@ export default function Next() {
   return (
     <div>
       <div
-        className=" googlefont1 bg-gradient-to-t p-2 from-green-400 to-blue-200
+        className=" googlefont1 bg-gradient-to-t px-2 from-green-400 to-blue-200
          h-full md:h-screen w-screen md:flex "
       >
-        <div className="w-full md:w-2/5 h-full rounded-lg shadow-2xl py-8 ">
+        <div className="w-full md:w-2/5 h-full rounded-lg shadow-2xl py-1 md:py-8 ">
           <Link to="/">
             <button className=" ml-2 md:ml-4 bg-transparent border-2 border-gray-200 inline-block rounded-full  p-2 py-1">
               <div className="inline-block">
@@ -170,14 +170,14 @@ export default function Next() {
           >
             <button className=" transform  hover:scale-105 md:-ml-3 rounded-xl text-base md:text-base relative top-3 px-2 py-2 "
             >
-              <FcSearch size="1rem" />
+              <FcSearch size="1.9rem" />
             </button>
 
           </Link>
 
           
 
-          <div className="text-5xl font-medium mt-0 text-gray-800 text-center ">
+          <div className="text-5xl font-medium mt-5 md:mt-0 text-gray-800 text-center ">
             Today
           </div>
 
@@ -227,7 +227,7 @@ export default function Next() {
 
           <div>
 
-            <div className="inline-block text-center w-1/2  md:w-2/5 md:mr-8 md:ml-10 mt-6   bg-transparent p-2 md:p-4 rounded-xl ">
+            <div className="inline-block text-center w-1/2 md:w-2/5 md:mr-4 md:ml-10 mt-6   bg-transparent p-2 md:p-4 rounded-xl ">
               <div className=" text-4xl md:text-6xl text-gray-50 md:text-gray-200">
                 {data1 ? Math.round(data1.humidity) : ""}%
                 <div className="inline-block ml-2 text-blue-400 ">
@@ -237,7 +237,7 @@ export default function Next() {
               <div className=" text-xl text-gray-400 md:text-gray-500">Humidity</div>
             </div>
 
-            <div className="inline-block text-center w-1/2  md:w-2/5 md:mr-8 md:ml-10 mt-6   bg-transparent p-2 md:p-4 rounded-xl  ">
+            <div className="inline-block text-center w-1/2  md:w-2/5  md:mr-8 md:ml-0 mt-6   bg-transparent p-2 md:p-4 rounded-xl  ">
               <div className="text-4xl md:text-6xl text-gray-50 md:text-gray-200">
                 {data1 ? Math.round(data1.wind_speed) : ""}
                 <div className="inline-block  text-3xl">Km/h</div>
@@ -260,7 +260,7 @@ export default function Next() {
               </div>
               <div className=" text-xl text-gray-400 md:text-gray-500">Sunrise</div>
             </div>
-            <div className="inline-block text-center w-1/2  md:w-2/5 md:mr-8 md:ml-10 mt-6   bg-transparent p-2 md:p-4 rounded-xl ">
+            <div className="inline-block text-center w-1/2  md:w-2/5 md:mr-8 md:ml-0 mt-6   bg-transparent p-2 md:p-4 rounded-xl ">
               <div className="text-4xl md:text-6xl text-gray-50 md:text-gray-200">
                 {timeArray[1]}
                 <div className="inline-block ml-1 text-xl">PM</div>
@@ -314,7 +314,7 @@ export default function Next() {
             }}
           >
 
-            <div className=" md:hidden w-full mt-6  ">
+            <div className=" md:hidden w-full mt-0  ">
 
               <div className=" bg-transparent   px-2 inline-block mb-4  font-extrabold text-2xl text-gray-400 mx-3 ">
                 Weekly
@@ -640,10 +640,10 @@ export default function Next() {
 
            </div>
             
-            <div className=" md:hidden ml-5 mt-4 text-2xl text-gray-400 font-extrabold ">
+            <div className=" md:hidden ml-5 mt-5 text-2xl text-gray-400 font-extrabold ">
                 Frequently Searched
             </div>
-            <div className="ml-5 w-12 mt-1 h-1 bg-gray-500 rounded-lg">
+            <div className="ml-5 md:hidden w-12 mt-1 h-1 bg-gray-500 rounded-lg">
 
             </div>
 
@@ -652,7 +652,7 @@ export default function Next() {
                 New Delhi , India
               </div>
 
-              <img src={Clouds} alt="" className="w-full rounded-xl h-64 md:h-52" />
+              <img src={Clouds} alt="" className="w-full rounded-xl h-72 md:h-52" />
             </button>
           </Link>
 
@@ -668,7 +668,7 @@ export default function Next() {
                 Kolkata , India
               </div>
 
-              <img src={Kolkata} alt="" className="w-full rounded-xl h-64 md:h-52" />
+              <img src={Kolkata} alt="" className="w-full rounded-xl h-72 md:h-52" />
             </button>
           </Link>
 
@@ -684,7 +684,7 @@ export default function Next() {
                 Mumbai , India
               </div>
 
-              <img src={Mumbai} alt="" className="w-full rounded-xl h-64 md:h-52" />
+              <img src={Mumbai} alt="" className="w-full rounded-xl h-72 md:h-52" />
             </button>
           </Link>
 
@@ -700,13 +700,18 @@ export default function Next() {
                 Chennai , India
               </div>
 
-              <img src={Chennai} alt="" className="w-full rounded-xl h-64 md:h-52" />
+              <img src={Chennai} alt="" className="w-full rounded-xl h-72 md:h-52" />
             </button>
           </Link>
 
 
 
-
+          <div className=" invisible md:visible bg-transparent   px-2 inline-block mb-2  font-extrabold text-2xl text-gray-400 mx-3 ">
+                Weekly
+                <div className=" ml-2 text-2xl inline-block text-gray-900 ">
+                  Weather Forcast
+                </div>
+              </div>
 
 
 
