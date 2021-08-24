@@ -307,12 +307,7 @@ export default function Next() {
 
 
 
-          <Link
-            to="/next"
-            onClick={() => {
-              localStorage.setItem("city", "Delhi");
-            }}
-          >
+          
 
             <div className=" md:hidden w-full mt-0  ">
 
@@ -646,8 +641,14 @@ export default function Next() {
             <div className="ml-5 md:hidden w-12 mt-1 h-1 bg-gray-500 rounded-lg">
 
             </div>
-
-            <button className="text-gray-300 w-80  md:w-52  mt-4 transform  hover:scale-105 bg-transparent    bg-cover bg-no-repeat z-10    rounded-xl ml-5  mb-4   text-xl mr-2   ">
+           
+            <Link
+            to="/next"
+            onClick={() => {
+              localStorage.setItem("city", "Delhi");
+            }}
+          >
+            <button className="text-gray-300  w-80  md:w-52  mt-4 transform  hover:scale-105 bg-transparent    bg-cover bg-no-repeat z-10    rounded-xl ml-5  mb-4   text-xl mr-2   ">
               <div className=" text-center bg-transparent mx-2 mb-2 font-extrabold mt-1   text-blue-50 text-2xl md:text-lg  block">
                 New Delhi , India
               </div>
