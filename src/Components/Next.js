@@ -680,7 +680,7 @@ export default function Next() {
           >
             <button className="text-gray-300  w-80 md:w-52  mt-2 transform  hover:scale-105 bg-transparent    bg-cover bg-no-repeat z-10    rounded-xl  ml-5 md:ml-2   mb-4   text-xl mr-2  ">
               <div className="text-4xl mx-2  font-bold  text-gray-900  block  text-left"></div>
-              <div className=" text-center bg-transparent mx-2 mb-2 font-extrabold mt-1   text-blue-50 text-2xl  block">
+              <div className=" text-center bg-transparent mx-2 mb-2 font-extrabold mt-1   text-blue-50 text-2xl md:text-lg  block">
                 Mumbai , India
               </div>
 
